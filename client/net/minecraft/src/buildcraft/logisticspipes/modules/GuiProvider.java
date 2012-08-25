@@ -7,7 +7,6 @@ import net.minecraft.src.GuiContainer;
 import net.minecraft.src.GuiScreen;
 import net.minecraft.src.IInventory;
 import net.minecraft.src.ModLoader;
-import buildcraft.api.APIProxy;
 import buildcraft.core.CoreProxy;
 import net.minecraft.src.buildcraft.krapht.GuiIDs;
 import net.minecraft.src.buildcraft.krapht.gui.GuiProviderPipe;
@@ -68,12 +67,12 @@ public class GuiProvider extends GuiWithPreviousGuiContainer {
 		if (guibutton.id == 0){
 			_provider.setFilterExcluded(!_provider.isExcludeFilter());
 			((GuiButton)controlList.get(0)).displayString = _provider.isExcludeFilter() ? "Exclude" : "Include";
-			if(APIProxy.isRemote()) {
+			if(CoreProxy.isRemote()) {
 				CoreProxy.sendToServer(new PacketPipeInteger(NetworkConstants.PROVIDER_MODULE_CHANGE_INCLUDE, _pipe.xCoord, _pipe.yCoord, _pipe.zCoord, _slot).getPacket());
 			}
 		} else if (guibutton.id  == 1){
 			_provider.nextExtractionMode();
-			if(APIProxy.isRemote()) {
+			if(CoreProxy.isRemote()) {
 				CoreProxy.sendToServer(new PacketPipeInteger(NetworkConstants.PROVIDER_MODULE_NEXT_MODE, _pipe.xCoord, _pipe.yCoord, _pipe.zCoord, _slot).getPacket());
 			}
 		}

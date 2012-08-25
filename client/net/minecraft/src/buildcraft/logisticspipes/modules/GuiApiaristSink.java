@@ -13,7 +13,6 @@ import net.minecraft.src.krapht.gui.BasicGuiHelper;
 import net.minecraft.src.krapht.gui.DummyContainer;
 import net.minecraft.src.krapht.gui.IItemTextureRenderSlot;
 import net.minecraft.src.krapht.gui.ISmallColorRenderSlot;
-import buildcraft.api.APIProxy;
 import buildcraft.core.CoreProxy;
 import buildcraft.transport.Pipe;
 
@@ -87,7 +86,7 @@ public class GuiApiaristSink extends GuiWithPreviousGuiContainer {
 			if(button == 1) {
 				setting.FilterTypeDown();
 			}
-			if(APIProxy.isRemote()) {
+			if(CoreProxy.isRemote()) {
 				PacketPipeBeePacket packet = new PacketPipeBeePacket(NetworkConstants.BEE_MODULE_SET_BEE, pipe.xCoord, pipe.yCoord, pipe.zCoord, gui.slot, row, 3, setting.filterType.ordinal());
 				CoreProxy.sendToServer(packet.getPacket());
 			}
@@ -157,7 +156,7 @@ public class GuiApiaristSink extends GuiWithPreviousGuiContainer {
 			if(button == 1) {
 				setting.filterGroupDown();
 			}
-			if(APIProxy.isRemote()) {
+			if(CoreProxy.isRemote()) {
 				PacketPipeBeePacket packet = new PacketPipeBeePacket(NetworkConstants.BEE_MODULE_SET_BEE, pipe.xCoord, pipe.yCoord, pipe.zCoord, gui.slot, row, 2, setting.filterGroup);
 				CoreProxy.sendToServer(packet.getPacket());
 			}
@@ -280,7 +279,7 @@ public class GuiApiaristSink extends GuiWithPreviousGuiContainer {
 					setting.secondBeeDown();
 				}
 			}
-			if(APIProxy.isRemote()) {
+			if(CoreProxy.isRemote()) {
 				PacketPipeBeePacket packet = new PacketPipeBeePacket(NetworkConstants.BEE_MODULE_SET_BEE, pipe.xCoord, pipe.yCoord, pipe.zCoord, gui.slot, row, slotNumber, slotNumber == 0 ? setting.firstBee : setting.secondBee);
 				CoreProxy.sendToServer(packet.getPacket());
 			}

@@ -18,7 +18,6 @@ import net.minecraft.src.krapht.gui.DummyContainer;
 
 import org.lwjgl.opengl.GL11;
 
-import buildcraft.api.APIProxy;
 import buildcraft.core.CoreProxy;
 import buildcraft.transport.Pipe;
 
@@ -44,7 +43,7 @@ public class GuiElectricManager extends GuiWithPreviousGuiContainer {
 			case 0:
 				_module.setDischargeMode(!_module.isDischargeMode());
 				((GuiButton)controlList.get(0)).displayString = _module.isDischargeMode() ? "Yes" : "No";
-				if(APIProxy.isClient(mc.theWorld)) {
+				if(CoreProxy.isClient(mc.theWorld)) {
 					CoreProxy.sendToServer(new PacketPipeInteger(NetworkConstants.ITEM_SINK_DEFAULT, pipe.xCoord, pipe.yCoord, pipe.zCoord, (_module.isDischargeMode() ? 1 : 0) + (slot * 10)).getPacket());
 				}
 				break;

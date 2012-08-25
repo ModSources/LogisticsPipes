@@ -12,10 +12,10 @@ import net.minecraft.src.TileEntity;
 import net.minecraft.src.World;
 import net.minecraft.src.core_LogisticsPipes;
 import net.minecraft.src.mod_LogisticsPipes;
-import buildcraft.api.APIProxy;
 import net.minecraft.src.buildcraft.krapht.GuiIDs;
 import net.minecraft.src.buildcraft.krapht.pipes.PipeItemsRemoteOrdererLogistics;
 import net.minecraft.src.buildcraft.krapht.routing.WorldProxy;
+import buildcraft.core.CoreProxy;
 import buildcraft.transport.Pipe;
 import buildcraft.transport.TileGenericPipe;
 import net.minecraft.src.forge.DimensionManager;
@@ -52,7 +52,7 @@ public class RemoteOrderer extends Item implements ITextureProvider {
     	}
 		PipeItemsRemoteOrdererLogistics pipe = getPipe(par1ItemStack);
 		if(pipe != null) {
-			if(!APIProxy.isClient(par2World)) {
+			if(!CoreProxy.isClient(par2World)) {
 				par3EntityPlayer.openGui(mod_LogisticsPipes.instance, GuiIDs.GUI_Normal_Orderer_ID, pipe.worldObj, pipe.xCoord, pipe.yCoord, pipe.zCoord);
 			}
 			return par1ItemStack.copy();

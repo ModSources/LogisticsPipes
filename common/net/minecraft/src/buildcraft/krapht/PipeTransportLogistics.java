@@ -25,7 +25,6 @@ import net.minecraft.src.TileEntity;
 import net.minecraft.src.World;
 import net.minecraft.src.core_LogisticsPipes;
 import buildcraft.mod_BuildCraftTransport;
-import buildcraft.api.APIProxy;
 import buildcraft.core.EntityPassiveItem;
 import buildcraft.api.core.Orientations;
 import buildcraft.api.core.Position;
@@ -134,7 +133,7 @@ public class PipeTransportLogistics extends PipeTransportItems {
 		
 		IRoutedItem routedItem = SimpleServiceLocator.buildCraftProxy.GetOrCreateRoutedItem(_pipe.worldObj, data);
 		Orientations value =_pipe.getRouteLayer().getOrientationForItem(routedItem);
-		if (value == null && APIProxy.isRemote()) {
+		if (value == null && CoreProxy.isRemote()) {
 			routedItem.getItemStack().stackSize = 0;
 			return Orientations.Unknown;
 		} else if (value == null) {
@@ -142,7 +141,7 @@ public class PipeTransportLogistics extends PipeTransportItems {
 			return Orientations.Unknown;
 		}
 		if (value == Orientations.Unknown && !routedItem.getDoNotBuffer()){
-			if(APIProxy.isServerSide()) {
+			if(CoreProxy.isServerSide()) {
 				//if (item.synchroTracker.markTimeIfDelay(worldObj, 6 * BuildCraftCore.updateFactor))
 					CoreProxy.sendToPlayers(createItemPacket(routedItem.getEntityPassiveItem(), value), worldObj, xCoord, yCoord, zCoord, DefaultProps.NETWORK_UPDATE_RANGE, mod_BuildCraftTransport.instance);
 			}
@@ -154,7 +153,7 @@ public class PipeTransportLogistics extends PipeTransportItems {
 		
 		readjustSpeed(routedItem.getEntityPassiveItem());
 		
-		if(APIProxy.isServerSide()) {
+		if(CoreProxy.isServerSide()) {
 			//if (item.synchroTracker.markTimeIfDelay(worldObj, 6 * BuildCraftCore.updateFactor))
 				CoreProxy.sendToPlayers(createItemPacket(routedItem.getEntityPassiveItem(), value), worldObj, xCoord, yCoord, zCoord, DefaultProps.NETWORK_UPDATE_RANGE, mod_BuildCraftTransport.instance);
 		}

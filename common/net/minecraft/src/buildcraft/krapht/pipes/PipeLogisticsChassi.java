@@ -19,7 +19,6 @@ import net.minecraft.src.TileEntity;
 import net.minecraft.src.World;
 import net.minecraft.src.core_LogisticsPipes;
 import buildcraft.mod_BuildCraftCore;
-import buildcraft.api.APIProxy;
 import buildcraft.api.core.Orientations;
 import buildcraft.api.core.Position;
 import buildcraft.core.CoreProxy;
@@ -210,7 +209,7 @@ public abstract class PipeLogisticsChassi extends RoutedPipe implements ISimpleI
 	public void onBlockRemoval() {
 		super.onBlockRemoval();
 		_moduleInventory.removeListener(this);
-		if(!APIProxy.isRemote()) {
+		if(!CoreProxy.isRemote()) {
 			for(int i=0;i<_moduleInventory.getSizeInventory();i++) {
 				if(_moduleInventory.getStackInSlot(i) != null) {
 					ItemModuleInformationManager.saveInfotmation(_moduleInventory.getStackInSlot(i), this.getLogisticsModule().getSubModule(i));
@@ -253,7 +252,7 @@ public abstract class PipeLogisticsChassi extends RoutedPipe implements ISimpleI
 		super.updateEntity();
 		if (switchOrientationOnTick){
 			switchOrientationOnTick = false;
-			if(!APIProxy.isRemote()) {
+			if(!CoreProxy.isRemote()) {
 				nextOrientation();
 				CoreProxy.sendToPlayers(container.getDescriptionPacket(), worldObj, xCoord, yCoord, zCoord, DefaultProps.NETWORK_UPDATE_RANGE, mod_BuildCraftCore.instance);
 			}
@@ -264,7 +263,7 @@ public abstract class PipeLogisticsChassi extends RoutedPipe implements ISimpleI
 		}
 		if(!init) {
 			init = true;
-			if(APIProxy.isRemote()) {
+			if(CoreProxy.isRemote()) {
 				CoreProxy.sendToServer(new PacketCoordinates(NetworkConstants.REQUEST_PIPE_UPDATE, xCoord, yCoord, zCoord).getPacket());
 			}
 		}

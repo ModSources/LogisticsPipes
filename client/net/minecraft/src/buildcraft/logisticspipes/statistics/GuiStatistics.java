@@ -13,7 +13,6 @@ import net.minecraft.src.ItemStack;
 import net.minecraft.src.ModLoader;
 import net.minecraft.src.Tessellator;
 import net.minecraft.src.mod_LogisticsPipes;
-import buildcraft.api.APIProxy;
 import buildcraft.core.CoreProxy;
 import net.minecraft.src.buildcraft.krapht.GuiIDs;
 import net.minecraft.src.buildcraft.krapht.network.NetworkConstants;
@@ -53,7 +52,7 @@ public class GuiStatistics extends KraphtBaseGuiScreen {
 	protected void keyTyped(char c, int i) {
 		if (i == 1 || c == 'e'){
 			if (prevGuiID != -1){
-				if(!APIProxy.isClient(mc.theWorld)) {
+				if(!CoreProxy.isClient(mc.theWorld)) {
 					_player.openGui(mod_LogisticsPipes.instance, prevGuiID, mc.theWorld, pipe.xCoord, pipe.yCoord, pipe.zCoord);
 				} else {
 					CoreProxy.sendToServer(new PacketPipeInteger(NetworkConstants.CHASSI_GUI_PACKET_ID, pipe.xCoord, pipe.yCoord, pipe.zCoord, prevGuiID).getPacket());

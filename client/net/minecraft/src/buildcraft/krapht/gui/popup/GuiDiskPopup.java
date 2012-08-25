@@ -16,7 +16,6 @@ import net.minecraft.src.krapht.gui.SubGuiScreen;
 
 import org.lwjgl.input.Keyboard;
 
-import buildcraft.api.APIProxy;
 import buildcraft.core.CoreProxy;
 
 public class GuiDiskPopup extends SubGuiScreen {
@@ -67,7 +66,7 @@ public class GuiDiskPopup extends SubGuiScreen {
 	
 	private void writeDiskName() {
 		editname = false;
-		if(APIProxy.isRemote()) {
+		if(CoreProxy.isRemote()) {
 			CoreProxy.sendToServer(new PacketPipeString(NetworkConstants.DISK_SET_NAME, mainGui.pipe.xCoord, mainGui.pipe.yCoord, mainGui.pipe.zCoord, name1 + name2).getPacket());
 			//this.setSubGui(new GuiMessagePopup("Diskname saving comming Soon"));
 		}
@@ -178,7 +177,7 @@ public class GuiDiskPopup extends SubGuiScreen {
 	}
 
 	private void handleRequest() {
-		if(!APIProxy.isRemote()) {
+		if(!CoreProxy.isRemote()) {
 			NBTTagCompound nbt = mainGui.getDisk().getTagCompound();
 			if(nbt == null) {
 				mainGui.getDisk().setTagCompound(new NBTTagCompound());

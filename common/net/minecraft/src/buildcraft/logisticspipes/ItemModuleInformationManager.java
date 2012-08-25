@@ -6,12 +6,13 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
+import buildcraft.core.CoreProxy;
+
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.NBTBase;
 import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.NBTTagList;
 import net.minecraft.src.NBTTagString;
-import buildcraft.api.APIProxy;
 import net.minecraft.src.buildcraft.logisticspipes.modules.IClientInformationProvider;
 import net.minecraft.src.buildcraft.logisticspipes.modules.ILogisticsModule;
 
@@ -31,7 +32,7 @@ public class ItemModuleInformationManager {
         if(nbt.equals(new NBTTagCompound())) {
         	return;
         }
-        if(APIProxy.isRemote()) {
+        if(CoreProxy.isRemote()) {
 			 NBTTagList list = new NBTTagList();
 			String info1 = "Please reopen the window";
 			String info2 = "to see the information.";
@@ -65,7 +66,7 @@ public class ItemModuleInformationManager {
 	
 	public static void readInformation(ItemStack itemStack, ILogisticsModule module) {
 		if(module == null) return;
-		if(APIProxy.isRemote()) return;
+		if(CoreProxy.isRemote()) return;
 		if(itemStack.hasTagCompound()) {
 			NBTTagCompound nbt = itemStack.getTagCompound();
 			if(nbt.hasKey("moduleInformation")) {

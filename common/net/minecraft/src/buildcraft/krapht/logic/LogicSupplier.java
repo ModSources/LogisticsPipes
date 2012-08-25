@@ -15,7 +15,6 @@ import net.minecraft.src.IInventory;
 import net.minecraft.src.ModLoader;
 import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.mod_LogisticsPipes;
-import buildcraft.api.APIProxy;
 import buildcraft.core.CoreProxy;
 import buildcraft.core.Utils;
 import buildcraft.energy.Engine;
@@ -68,7 +67,7 @@ public class LogicSupplier extends BaseRoutingLogic implements IRequireReliableT
 	@Override
 	public void onWrenchClicked(EntityPlayer entityplayer) {
 		//pause = true; //Pause until GUI is closed //TODO Find a way to handle this
-		if(!APIProxy.isClient(entityplayer.worldObj)) {
+		if(!CoreProxy.isClient(entityplayer.worldObj)) {
 			//GuiProxy.openGuiSupplierPipe(entityplayer.inventory, dummyInventory, this);
 			entityplayer.openGui(mod_LogisticsPipes.instance, GuiIDs.GUI_SupplierPipe_ID, worldObj, xCoord, yCoord, zCoord);
 			CoreProxy.sendToPlayer(entityplayer, new PacketPipeInteger(NetworkConstants.SUPPLIER_PIPE_MODE_RESPONSE, xCoord, yCoord, zCoord, isRequestingPartials() ? 1 : 0));
@@ -87,7 +86,7 @@ public class LogicSupplier extends BaseRoutingLogic implements IRequireReliableT
 			return;
 		}
 		
-		if(APIProxy.isClient(worldObj)) return;
+		if(CoreProxy.isClient(worldObj)) return;
 		if (pause) return;
 		super.throttledUpdateEntity();
 		WorldUtil worldUtil = new WorldUtil(worldObj, xCoord, yCoord, zCoord);

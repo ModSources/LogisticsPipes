@@ -23,7 +23,6 @@ import net.minecraft.src.krapht.AdjacentTile;
 import net.minecraft.src.krapht.ItemIdentifier;
 import net.minecraft.src.krapht.SimpleInventory;
 import net.minecraft.src.krapht.WorldUtil;
-import buildcraft.api.APIProxy;
 import buildcraft.api.core.Orientations;
 import buildcraft.core.CoreProxy;
 import buildcraft.core.network.TileNetworkData;
@@ -178,7 +177,7 @@ public abstract class BaseLogicCrafting extends BaseRoutingLogic implements IReq
 	}
 
 	public void openAttachedGui(EntityPlayer player) {
-		if (APIProxy.isRemote()) {
+		if (CoreProxy.isRemote()) {
 			final PacketCoordinates packet = new PacketCoordinates(NetworkConstants.CRAFTING_PIPE_OPEN_CONNECTED_GUI, xCoord, yCoord, zCoord);
 			CoreProxy.sendToServer(packet.getPacket());
 		}
