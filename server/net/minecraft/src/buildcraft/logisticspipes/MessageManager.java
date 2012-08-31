@@ -6,7 +6,6 @@ import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.EntityPlayerMP;
 import net.minecraft.src.Item;
 import net.minecraft.src.ModLoader;
-import buildcraft.api.APIProxy;
 import buildcraft.core.CoreProxy;
 import net.minecraft.src.buildcraft.krapht.ItemMessage;
 import net.minecraft.src.buildcraft.krapht.network.PacketCraftingLoop;

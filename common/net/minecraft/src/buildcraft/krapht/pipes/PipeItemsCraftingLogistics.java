@@ -16,7 +16,6 @@ import net.minecraft.src.ItemStack;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.core_LogisticsPipes;
 import net.minecraft.src.mod_LogisticsPipes;
-import buildcraft.api.APIProxy;
 import buildcraft.core.EntityPassiveItem;
 import buildcraft.api.inventory.ISpecialInventory;
 import buildcraft.api.core.Orientations;
@@ -97,7 +96,7 @@ public class PipeItemsCraftingLogistics extends RoutedPipe implements ICraftItem
 		super.updateEntity();
 		if(!init) {
 			init = true;
-			if(APIProxy.isRemote()) {
+			if(CoreProxy.isRemote()) {
 				CoreProxy.sendToServer(new PacketCoordinates(NetworkConstants.REQUEST_CRAFTING_PIPE_UPDATE, xCoord, yCoord, zCoord).getPacket());
 			}
 		}

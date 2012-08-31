@@ -15,7 +15,6 @@ import net.minecraft.src.IInventory;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.core_LogisticsPipes;
 import net.minecraft.src.mod_LogisticsPipes;
-import buildcraft.api.APIProxy;
 import buildcraft.core.EntityPassiveItem;
 import buildcraft.api.inventory.ISpecialInventory;
 import buildcraft.api.core.Orientations;

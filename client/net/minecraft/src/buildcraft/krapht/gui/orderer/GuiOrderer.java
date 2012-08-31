@@ -28,7 +28,6 @@ import net.minecraft.src.Tessellator;
 import net.minecraft.src.core_LogisticsPipes;
 import net.minecraft.src.mod_LogisticsPipes;
 import buildcraft.core.CoreProxy;
-import buildcraft.api.APIProxy;
 import net.minecraft.src.buildcraft.krapht.CoreRoutedPipe;
 import net.minecraft.src.buildcraft.krapht.ItemMessage;
 import net.minecraft.src.buildcraft.krapht.GuiIDs;
@@ -204,7 +203,7 @@ public abstract class GuiOrderer extends KraphtBaseGuiScreen implements IItemSea
 		
 		drawRect(guiLeft + 6, guiTop + 16, right - 12, bottom - 84, Colors.MiddleGrey);
 		
-		if(!listbyserver && APIProxy.isRemote()) {
+		if(!listbyserver && CoreProxy.isRemote()) {
 			int graphic = ((int)(System.currentTimeMillis() / 250) % 5);
 			GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/gui/icons.png"));
             GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);

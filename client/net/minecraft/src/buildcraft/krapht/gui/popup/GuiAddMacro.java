@@ -22,7 +22,6 @@ import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
 
-import buildcraft.api.APIProxy;
 import buildcraft.core.CoreProxy;
 
 public class GuiAddMacro extends SubGuiScreen implements IItemSearch {
@@ -431,7 +430,7 @@ public class GuiAddMacro extends SubGuiScreen implements IItemSearch {
 					nbt.setTag("inventar", inventar);
 					list.appendTag(nbt);
 					this.mainGui.getDisk().getTagCompound().setTag("macroList", list);
-					if(APIProxy.isRemote()) {
+					if(CoreProxy.isRemote()) {
 						CoreProxy.sendToServer(new PacketItem(NetworkConstants.DISK_CONTENT, mainGui.pipe.xCoord, mainGui.pipe.yCoord, mainGui.pipe.zCoord, mainGui.pipe.getDisk()).getPacket());
 						//this.controler.resetSubGui();
 						//this.controler.setSubGui(new GuiMessagePopup("Saving will come soon", "Would be saved as: "+name1+name2));

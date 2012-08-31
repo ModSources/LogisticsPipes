@@ -9,7 +9,6 @@ package net.minecraft.src.buildcraft.krapht.logic;
 
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.mod_LogisticsPipes;
-import buildcraft.api.APIProxy;
 import buildcraft.core.CoreProxy;
 import buildcraft.core.network.TileNetworkData;
 import net.minecraft.src.buildcraft.krapht.GuiIDs;
@@ -25,7 +24,7 @@ public class LogicSatellite extends BaseLogicSatellite {
 	public void setNextId() {
 		super.setNextId();
 
-		if (APIProxy.isRemote()) {
+		if (CoreProxy.isRemote()) {
 			// Using existing BuildCraft packet system
 			final PacketCoordinates packet = new PacketCoordinates(NetworkConstants.SATELLITE_PIPE_NEXT, xCoord, yCoord, zCoord);
 			CoreProxy.sendToServer(packet.getPacket());
@@ -36,7 +35,7 @@ public class LogicSatellite extends BaseLogicSatellite {
 	public void setPrevId() {
 		super.setPrevId();
 
-		if (APIProxy.isRemote()) {
+		if (CoreProxy.isRemote()) {
 			// Using existing BuildCraft packet system
 			final PacketCoordinates packet = new PacketCoordinates(NetworkConstants.SATELLITE_PIPE_PREV, xCoord, yCoord, zCoord);
 			CoreProxy.sendToServer(packet.getPacket());
@@ -49,7 +48,7 @@ public class LogicSatellite extends BaseLogicSatellite {
 
 	@Override
 	public void onWrenchClicked(EntityPlayer entityplayer) {
-		if (!APIProxy.isRemote()) {
+		if (!CoreProxy.isRemote()) {
 			entityplayer.openGui(mod_LogisticsPipes.instance, GuiIDs.GUI_SatelitePipe_ID, worldObj, xCoord, yCoord, zCoord);
 		}
 	}

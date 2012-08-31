@@ -13,12 +13,12 @@ import java.util.HashMap;
 import java.util.LinkedList;
 
 import buildcraft.BuildCraftCore;
+import buildcraft.core.CoreProxy;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ModLoader;
 import net.minecraft.src.World;
 import net.minecraft.src.core_LogisticsPipes;
 import net.minecraft.src.mod_LogisticsPipes;
-import buildcraft.api.APIProxy;
 import net.minecraft.src.buildcraft.krapht.GuiIDs;
 import net.minecraft.src.buildcraft.krapht.IRequestItems;
 import net.minecraft.src.buildcraft.krapht.RoutedPipe;
@@ -52,7 +52,7 @@ public class PipeItemsRequestLogistics extends RoutedPipe implements IRequestIte
 	@Override
 	public boolean blockActivated(World world, int i, int j, int k,	EntityPlayer entityplayer) {
 		if (entityplayer.getCurrentEquippedItem() != null && entityplayer.getCurrentEquippedItem().getItem() == BuildCraftCore.wrenchItem){
-			if (!APIProxy.isRemote()) {
+			if (!CoreProxy.isRemote()) {
 				openGui(entityplayer);
 			}
 		}

@@ -1,5 +1,6 @@
 package net.minecraft.src.buildcraft.krapht.pipes;
 
+import buildcraft.core.CoreProxy;
 import net.minecraft.src.EntityItem;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
@@ -8,7 +9,6 @@ import net.minecraft.src.World;
 import net.minecraft.src.core_LogisticsPipes;
 import net.minecraft.src.mod_LogisticsPipes;
 import net.minecraft.src.buildcraft.krapht.GuiIDs;
-import buildcraft.api.APIProxy;
 
 public class PipeItemsRequestLogisticsMk2 extends PipeItemsRequestLogistics {
 	
@@ -20,7 +20,7 @@ public class PipeItemsRequestLogisticsMk2 extends PipeItemsRequestLogistics {
 
 	@Override
 	public boolean blockActivated(World world, int i, int j, int k,	EntityPlayer entityplayer) {
-		if (!APIProxy.isRemote()) {
+		if (!CoreProxy.isRemote()) {
 			openGui(entityplayer);
 		}
 		return true;
@@ -77,7 +77,7 @@ public class PipeItemsRequestLogisticsMk2 extends PipeItemsRequestLogistics {
 	@Override
 	public void onBlockRemoval() {
 		super.onBlockRemoval();
-		if(!APIProxy.isRemote()) {
+		if(!CoreProxy.isRemote()) {
 			this.dropDisk();
 		}
 	}

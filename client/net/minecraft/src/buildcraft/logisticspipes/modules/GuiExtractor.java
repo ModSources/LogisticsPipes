@@ -12,7 +12,6 @@ import net.minecraft.src.GuiButton;
 import net.minecraft.src.GuiContainer;
 import net.minecraft.src.GuiScreen;
 import net.minecraft.src.IInventory;
-import buildcraft.api.APIProxy;
 import buildcraft.api.core.Orientations;
 import buildcraft.core.CoreProxy;
 import buildcraft.core.GuiIds;
@@ -87,7 +86,7 @@ public class GuiExtractor extends GuiWithPreviousGuiContainer {
 			break;
 		}
 		
-		if(APIProxy.isRemote()) {
+		if(CoreProxy.isRemote()) {
 			CoreProxy.sendToServer(new PacketPipeInteger(NetworkConstants.EXTRACTOR_MODULE_DIRECTION_SET, pipe.xCoord, pipe.yCoord, pipe.zCoord, guibutton.id + (slot * 10)).getPacket());
 		}
 		

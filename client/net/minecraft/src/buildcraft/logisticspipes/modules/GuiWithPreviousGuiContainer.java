@@ -3,7 +3,6 @@ package net.minecraft.src.buildcraft.logisticspipes.modules;
 import net.minecraft.src.Container;
 import net.minecraft.src.GuiScreen;
 import net.minecraft.src.mod_LogisticsPipes;
-import buildcraft.api.APIProxy;
 import buildcraft.core.CoreProxy;
 import net.minecraft.src.buildcraft.krapht.network.NetworkConstants;
 import net.minecraft.src.buildcraft.krapht.network.PacketPipeInteger;
@@ -36,7 +35,7 @@ public abstract class GuiWithPreviousGuiContainer extends KraphtBaseGuiScreen im
 	protected void keyTyped(char c, int i) {
 		if (i == 1 || c == 'e') {
 			if (prevGuiID != -1) {
-				if(!APIProxy.isClient(mc.theWorld)) {
+				if(!CoreProxy.isClient(mc.theWorld)) {
 					mc.thePlayer.openGui(mod_LogisticsPipes.instance, prevGuiID + 10000, mc.theWorld, pipe.xCoord, pipe.yCoord, pipe.zCoord);
 				} else {
 					super.keyTyped(c,i);
