@@ -1,18 +1,3 @@
-# LogisticsPipes
-
-## Note: this is an archive of the source code, no issues, pull requests will be handled.
-
-This is the **unofficial SMP version with additional features** for the minecraft modification *Logistics Pipes*.
-
-## Archive Info
-The original readme is in README.md.original.
-This readme and the LICENSE.txt file were not part of the original.
-
-## Mod Info
-LogisticsPipes was created by [Krapht](https://github.com/Krapht).
-
-## License
-```
 Minecraft Mod Public License
 ============================
 
@@ -100,4 +85,3 @@ Bukkit).
 Modified version of binaries and sources, as well as files containing sections
 copied from this mod, should be distributed under the terms of the present
 license.
-```
